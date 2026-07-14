@@ -1,0 +1,220 @@
+{
+  "meta": {
+    "subject": "VCE Physical Education",
+    "unit": "Unit 1 AOS 1",
+    "topic": "Structure and Function of the Muscular System",
+    "chapter": "1.3",
+    "band": "senior",
+    "palette": "PE",
+    "sport_context": {
+      "sport": "Volleyball",
+      "why_chosen": "Volleyball demands all three muscle types (skeletal for jumping/spiking, cardiac for sustained effort, smooth for digestion/circulation during play), engages the full range of major skeletal muscles across anterior and posterior chains, and maps naturally onto the practical activity in 1.3 — making it the single context that unifies all KK without contrivance."
+    }
+  },
+  "palette": {
+    "accent": "0F4C81",
+    "pipe": "0A3A63",
+    "bgLight": "F4F6F8",
+    "bgDoNow": "FBEEE4",
+    "doNow": "8A3210",
+    "iDo": "0F4C81",
+    "weDo": "15662F",
+    "youDo": "8A3210",
+    "exit": "5A1A5A",
+    "summary": "0F4C81",
+    "cardKK": "D6E4F0",
+    "cardKS": "FBEEE4",
+    "text": "1C1C1A",
+    "textInverse": "FFFFFF"
+  },
+  "slides": [
+    {
+      "type": "doNow",
+      "variant": "questions",
+      "items": [
+        "Name THREE major bones found in the lower limb. Use correct anatomical terminology.",
+        "What is the difference between a concentric and an eccentric muscle contraction? Give one example of each.",
+        "A sprinter needs explosive force. Which motor unit type — small or large — is recruited first, and why?",
+        "Identify the agonist and antagonist muscles when the elbow is flexed during a biceps curl."
+      ],
+      "notes": "Answers: 1) Any three from: femur, patella, tibia, fibula, tarsals, metatarsals, phalanges. 2) Concentric = muscle shortens as force is produced (e.g. upward phase of biceps curl); eccentric = muscle lengthens as force is produced (e.g. lowering phase of biceps curl). 3) Small motor units (slow-twitch) are recruited first per the size principle, even for explosive tasks — large fast-twitch motor units follow as force demand increases. 4) Agonist = biceps brachii; antagonist = triceps brachii. Cold-call Q3 first — most students will say 'large' intuitively. Use the correction to prime today's content on muscle types."
+    },
+    {
+      "type": "title",
+      "topic": "Structure and Function of the Muscular System",
+      "unit": "Unit 1 AOS 1 — Topic 1.3 | VCE Physical Education 2025–2029",
+      "notes": ""
+    },
+    {
+      "type": "lis",
+      "keyKnowledge": [
+        "The three functions of the muscular system: body movement, adequate posture, essential bodily functions",
+        "The three types of muscle: smooth (involuntary), cardiac (involuntary), skeletal (voluntary)",
+        "The major skeletal muscles of the human body and the joint actions they produce"
+      ],
+      "keySkills": [
+        "Apply anatomical terminology to identify muscular system structures and functions in producing movement",
+        "Name major muscles and correctly identify the action each produces in a physical activity context"
+      ],
+      "notes": "KK drawn verbatim from Study Design 2025–2029 and Jacaranda 1.3. Three clean KK items map one-to-one to the three I DO slides. Preview the volleyball context: 'By the end of today you will be able to watch a volleyball rally and name the muscles working at each joint, explain why your heart beats faster, and why your gut slows down — all explained by the muscular system.'"
+    },
+    {
+      "type": "iDo",
+      "variant": "concept",
+      "headerTitle": "Functions of the Muscular System",
+      "teaches": [
+        1
+      ],
+      "concept": "The muscular system has three core functions that operate simultaneously during physical activity.",
+      "bullets": [
+        {
+          "label": "Movement",
+          "text": "Skeletal muscles attach to bones and pull across joints when the CNS signals — e.g. quads extend the knee to jump."
+        },
+        {
+          "label": "Posture",
+          "text": "Muscles maintain constant tone to resist gravity. Postural muscles (trapezius, rhomboids) are in continuous low-level contraction."
+        },
+        {
+          "label": "Vital functions",
+          "text": "Involuntary muscles sustain life — the heart pumps continuously; smooth muscle adjusts blood flow and digestion."
+        }
+      ],
+      "notes": "Chunking strategy: Thematic — all three functions grouped under 'What does muscle do for the body beyond just moving your arm?' HITS: Explicit Teaching. 5Ps: Pedagogical Practice. Volleyball anchor: 'During a volleyball match, all three are happening at once — you spike (movement), you hold ready position (posture), your heart pumps and your gut pauses digestion (bodily functions).' Cold-call: 'Which function is active even when you are asleep?' (bodily functions). Do NOT introduce muscle types here — that is the next slide."
+    },
+    {
+      "type": "iDo",
+      "variant": "definition",
+      "headerTitle": "Three Types of Muscle",
+      "teaches": [
+        2
+      ],
+      "concept": "Muscles are classified into three types based on structure, location, and whether they are under conscious (voluntary) or unconscious (involuntary) control.",
+      "bullets": [
+        {
+          "label": "Smooth",
+          "text": "Found in hollow organs (gut, blood vessels). Slow, rhythmic, involuntary contractions. No conscious control. Slow to fatigue."
+        },
+        {
+          "label": "Cardiac",
+          "text": "Found only in the heart. Involuntary and fatigue-resistant. Rate rises via the autonomic nervous system, not conscious will."
+        },
+        {
+          "label": "Skeletal",
+          "text": "Attaches to bone; striated; under voluntary CNS control. Produces all deliberate movement. Focus of this topic."
+        }
+      ],
+      "notes": "Chunking strategy: Progressive Disclosure — voluntary vs involuntary distinction first, then three types, then their roles. HITS: Explicit Teaching, Worked Examples. 5Ps: Pedagogical Practice. Volleyball anchor: 'In a volleyball match — your deltoid spikes (skeletal/voluntary); your heart rate lifts to 160 bpm (cardiac/involuntary); blood vessels in your gut constrict so more blood goes to working muscles (smooth/involuntary).' Common error to pre-empt: students confuse cardiac as voluntary because 'I can make my heart beat faster.' Clarify: the increase comes from autonomic nervous system, not conscious command. Link to Exam Tip slide that follows."
+    },
+    {
+      "type": "examTip",
+      "headerTitle": "Identifying Muscle Type in Exam Questions",
+      "tip": "When asked to identify muscle type, always state whether it is voluntary or involuntary AND name its location or the movement it produces. One word ('skeletal') without context earns zero.",
+      "wrong": "The heart uses cardiac muscle.",
+      "right": "The heart uses cardiac muscle, which is involuntary — it contracts continuously without conscious control to pump blood to working muscles.",
+      "why": "Exam questions ask you to 'describe' or 'explain' — a single label with no elaboration does not demonstrate understanding and will not earn the mark.",
+      "notes": "Source: ACHPER exam reports consistently flag one-word answers for muscle type as the most common drop in this subtopic. Take 2 minutes here. Ask students to pair-share a corrected response before moving to major muscles."
+    },
+    {
+      "type": "iDo",
+      "variant": "principle",
+      "headerTitle": "Major Skeletal Muscles and Their Actions",
+      "teaches": [
+        3
+      ],
+      "concept": "Each skeletal muscle produces a specific joint action. Knowing the muscle name AND its action is required for exam credit.",
+      "bullets": [
+        {
+          "label": "Ant. upper",
+          "text": "Deltoid (shoulder abd/flex), pectoralis major (shoulder flex), biceps brachii (elbow flex), triceps brachii (elbow ext)."
+        },
+        {
+          "label": "Post. upper",
+          "text": "Trapezius (scapula elevation), latissimus dorsi (shoulder adduction), erector spinae (trunk extension/rotation)."
+        },
+        {
+          "label": "Lower body",
+          "text": "Quadriceps (knee ext/hip flex), hamstrings (knee flex/hip ext), gluteus maximus (hip ext), gastrocnemius (plantar flex)."
+        }
+      ],
+      "notes": "Chunking strategy: Dual Coding — annotated muscle diagram on the board alongside this slide. HITS: Explicit Teaching, Worked Examples. 5Ps: Purposeful Technology (refer to Figure 1.16 anterior/posterior diagrams), Pedagogical Practice. Volleyball anchor: 'Spike approach: quadriceps extend the knee (take-off), deltoid abducts and flexes the shoulder (arm swing), pectoralis major produces shoulder flexion (contact), gastrocnemius plantar-flexes to propel the body up.' Authoring note: this slide covers the principle — the LEARNING ACTIVITY provides the application practice. Do not list every muscle; the three grouped bullets give the key anchor points students can expand from the textbook."
+    },
+    {
+      "type": "stimulus",
+      "headerTitle": "Muscles in Action — Volleyball Spike",
+      "mode": "image-placeholder",
+      "placeholderText": "Insert Figure 1.16 (anterior and posterior muscle diagrams) from Jacaranda Live It Up VCE Units 1 & 2 Fifth Edition, p. 21",
+      "caption": "Anterior (front) and posterior (back) views of major skeletal muscles — identify the muscles active during the volleyball spike approach and jump.",
+      "notes": "Use this slide to run a cold-call identification activity before the Learning Activity. Point to a muscle on the diagram and ask students to name it and state its action. Suggested sequence: deltoid → quadriceps → hamstrings → gastrocnemius → pectoralis major. Accept anatomical name + action for full credit. This primes the WE DO task."
+    },
+    {
+      "type": "learningActivity",
+      "headerTitle": "Muscle Mapping — Volleyball Movements",
+      "timeMinutes": 15,
+      "task": "Using Figure 1.16 (p. 21) and Table 1.4 (p. 22), complete a Muscle Mapping table for THREE volleyball skills: spike, forearm dig, and overhead set. For each, identify the major muscles, the joint action, and the contraction type.",
+      "scaffolding": [
+        {
+          "type": "structure-hint",
+          "content": "Four columns: Volleyball Skill | Muscle(s) | Joint Action | Contraction Type. Work one skill at a time — start with the spike."
+        },
+        {
+          "type": "key-terms",
+          "content": "Concentric = muscle shortens; eccentric = muscle lengthens under load; isometric = tension with no length change; agonist = prime mover."
+        },
+        {
+          "type": "sentence-starter",
+          "content": "The [muscle] produces [joint action] at the [joint]. This is a [contraction type] because the muscle [shortens/lengthens/stays same length]."
+        }
+      ],
+      "stimulusReference": "Figure 1.16 (p. 21) and Table 1.4 (p. 22) — Jacaranda Live It Up VCE Units 1 & 2",
+      "notes": "HITS: Worked Examples, Collaborative Learning. 5Ps: Play (movement analysis task), Participation (pair work). Circulate and check: the most common error is naming the muscle correctly but giving the wrong contraction type for the landing phase (landing = eccentric, not concentric). Prompt with: 'Is the quad getting shorter or longer as you absorb the landing?' Cold-call pairs to share answers before moving to YOU DO. Accept any well-justified response — spike is most modelled, so use it as the shared anchor."
+    },
+    {
+      "type": "youDo",
+      "taskName": "Muscle Analysis — Your Sport",
+      "timeMinutes": 15,
+      "continuumLevels": [
+        "Acquiring: Choose ONE skill from volleyball (or your nominated sport). Name TWO muscles active during that skill and state the joint action each produces. Use the muscle diagram and table in your textbook.",
+        "Consolidating: Choose ONE skill from volleyball (or your nominated sport). For EACH major muscle active, name the muscle, state the joint action, and identify the contraction type (concentric/eccentric/isometric). Justify your contraction-type choice in one sentence.",
+        "Refining: Analyse TWO phases of a volleyball spike (e.g. jump take-off AND contact). For each phase, name the primary agonist muscles, the joint actions they produce, and explain how the contraction type changes between phases. Use anatomical terminology throughout.",
+        "Extending: Analyse a spike across THREE phases. For each: name agonist and antagonist, the joint actions, and the contraction type. Explain how reciprocal inhibition operates between each pair.",
+        "Mastering: A player tears a hamstring during a spike approach. Explain which phase causes this injury, how it disrupts the agonist–antagonist relationship at the knee, and the implications for performance in rehabilitation."
+      ],
+      "notes": "Portal companion output required. Differentiation note: Acquiring and Consolidating students should have textbook and scaffolding card open. Refining students work independently with textbook reference only. Extending and Mastering students work from memory, using textbook to verify. Mastering prompt is injury-analysis — link explicitly to Unit 3 content on injury prevention. If students don't play volleyball, they may substitute their own sport but must still use correct anatomical terminology. Monitor Acquiring students closely — the most common gap is guessing contraction type without applying the definition."
+    },
+    {
+      "type": "examPractice",
+      "headerTitle": "Muscular System — Short Answer",
+      "marks": 3,
+      "attemptMinutes": 5,
+      "question": "A volleyball player holds a slightly bent knee throughout a forearm dig. Identify and describe the type of muscular contraction at the quadriceps, and explain why this contraction type suits this skill.",
+      "strategy": [
+        "Step 1 — Identify: name the contraction type. One word is not enough — describe what is happening to muscle length.",
+        "Step 2 — Describe: state whether the muscle shortens, lengthens, or maintains length, and link to the definition.",
+        "Step 3 — Explain: connect the contraction type to its function in this skill (stability, force absorption)."
+      ],
+      "modelAnswer": "Isometric — the quadriceps generate force but muscle length does not change and no joint movement occurs. This suits the dig: the player holds a stable bent-knee platform throughout contact. If the knee shifted, the contact surface would move and directional control would be lost.",
+      "markPoints": [
+        "Identifies isometric contraction (1 mark)",
+        "Describes isometric: force produced with no change in muscle length / no joint movement (1 mark)",
+        "Explains why isometric suits the dig: holding stable position / consistent platform (1 mark)"
+      ],
+      "commonError": "Students write 'concentric because the muscle is working hard' — working hard does not determine contraction type; length change does.",
+      "notes": "Slide 1 (question): Give students 5 minutes individual attempt. No notes. Circulate and observe — look for students who draw a blank on contraction type and prompt: 'Is the knee joint angle changing?' Slide 2 (model): Reveal model answer one step at a time. Emphasise that the model answer links the contraction to the skill function — that link is what earns the third mark. Source: contraction-type application questions appear in every ACHPER trial exam for Unit 1. Common error sourced from ACHPER exam report."
+    },
+    {
+      "type": "exitCard",
+      "timeMinutes": 5,
+      "questions": [
+        "Name the three types of muscle and state whether each is voluntary or involuntary.",
+        "During the take-off phase of a volleyball spike, the gastrocnemius plantar-flexes. Is this concentric or eccentric? Justify in one sentence.",
+        "A netball player holds the 'ready position' with knees slightly bent between passes. Which contraction type are the quadriceps performing, and why?"
+      ],
+      "notes": "Answers: 1) Smooth (involuntary), cardiac (involuntary), skeletal (voluntary). 2) Concentric — the gastrocnemius shortens as it produces the force to push the foot into plantar flexion and drive the body upward. 3) Isometric — the quadriceps maintain tension to hold the bent-knee position but the muscle length does not change because there is no movement at the knee joint. Collect exit cards or have students hold up fingers (1 = Q1, 2 = Q2, 3 = Q3) to self-assess. Reteach trigger: if more than 30% cannot answer Q1, the three muscle types need a retrieval warm-up at the start of the next lesson before moving to 1.4."
+    },
+    {
+      "type": "summary",
+      "notes": "Auto-pulls KK from the LIS slide. Verbal prompt: 'Before you pack up — turn to your partner and explain one thing from today's lesson using a volleyball example. You have 60 seconds.' Preview: next lesson (1.4) goes deeper into skeletal muscle structure — sarcomeres, sliding filament theory, and muscle fibre types. The 'voluntary control' thread from today connects directly to motor unit recruitment."
+    }
+  ]
+}
