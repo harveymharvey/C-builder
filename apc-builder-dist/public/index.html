@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>APC Lesson Builder</title>
+<style>
+  :root {
+    --bg: #F4F6F8;
+    --panel: #FFFFFF;
+    --border: #D6DDE3;
+    --pipe: #0A3A63;
+    --accent: #0F4C81;
+    --warn: #8A6A1A;
+    --warn-bg: #FBF3DC;
+    --error: #8A1A1A;
+    --error-bg: #FBE3E3;
+    --ok: #15662F;
+    --ok-bg: #E0EBDC;
+    --text: #1C1C1A;
+    --muted: #5A6770;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, Calibri, "Segoe UI", Helvetica, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  header { margin-bottom: 1.5rem; }
+  h1 { font-size: 1.6rem; margin: 0 0 0.3rem; color: var(--pipe); }
+  .sub { color: var(--muted); font-size: 0.9rem; }
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+  .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+  .tab { padding: 0.6rem 1.2rem; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+  .tab.active { background: var(--pipe); color: white; border-color: var(--pipe); }
+  .field { margin-bottom: 1rem; }
+  label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.3rem; color: var(--pipe); }
+  input[type="text"], input[type="file"] { width: 100%; padding: 0.5rem 0.7rem; border: 1px solid var(--border); border-radius: 4px; font: inherit; font-size: 0.9rem; background: white; }
+  button { background: var(--pipe); color: white; border: none; padding: 0.6rem 1.4rem; border-radius: 4px; font: inherit; font-size: 0.9rem; cursor: pointer; font-weight: 600; }
+  button:hover { background: var(--accent); }
+  button.warn { background: var(--warn); }
+  button.warn:hover { background: #6E5410; }
+  button:disabled { background: #ABB7C0; cursor: not-allowed; }
+  button.secondary { background: white; color: var(--pipe); border: 1px solid var(--pipe); }
+  button.secondary:hover { background: #EAF0F5; }
+  .result { padding: 1rem 1.2rem; border-radius: 6px; margin-top: 1rem; font-size: 0.9rem; }
+  .result.ok { background: var(--ok-bg); border: 1px solid var(--ok); color: var(--ok); }
+  .result.warn { background: var(--warn-bg); border: 1px solid var(--warn); color: var(--warn); }
+  .result.error { background: var(--error-bg); border: 1px solid var(--error); color: var(--error); }
+  .result h3 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+  .result ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+  .result li { margin: 0.3rem 0; }
+  .downloads { margin-top: 1rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .download-link { background: white; border: 1px solid var(--pipe); color: var(--pipe); padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+  .download-link:hover { background: var(--pipe); color: white; }
+  .batch-row { padding: 0.8rem 1rem; border: 1px solid var(--border); border-radius: 4px; margin-bottom: 0.5rem; background: white; }
+  .batch-row.fail { border-left: 4px solid var(--error); }
+  .batch-row.ok { border-left: 4px solid var(--ok); }
+  .batch-row.warn { border-left: 4px solid var(--warn); }
+  .batch-file { font-weight: 600; font-size: 0.9rem; }
+  .batch-message { font-size: 0.82rem; color: var(--muted); margin-top: 0.3rem; }
+  .actions { display: flex; gap: 0.6rem; align-items: center; }
+  .out-folder { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.8rem; color: var(--muted); margin-top: 1rem; }
+  .hidden { display: none; }
+  .spec-preview { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.78rem; background: #F0F3F6; padding: 0.6rem 0.8rem; border-radius: 4px; max-height: 140px; overflow: auto; margin-top: 0.5rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>APC Lesson Builder</h1>
+  <div class="sub">Validates JSON specs against the schema, then builds schema-conforming .pptx files.</div>
+</header>
+
+<div class="tabs">
+  <div class="tab active" data-tab="single">Single file</div>
+  <div class="tab" data-tab="batch">Batch folder</div>
+</div>
+
+<!-- ====== SINGLE FILE TAB ====== -->
+<div id="tab-single" class="panel">
+  <div class="field">
+    <label for="file-input">Upload a lesson spec (.json)</label>
+    <input type="file" id="file-input" accept=".json">
+  </div>
+  <div id="spec-info" class="hidden">
+    <div class="spec-preview" id="spec-preview"></div>
+  </div>
+  <div class="actions">
+    <button id="validate-btn" disabled>Validate</button>
+    <button id="build-btn" class="secondary hidden" disabled>Build PPTX</button>
+  </div>
+  <div id="single-result"></div>
+</div>
+
+<!-- ====== BATCH TAB ====== -->
+<div id="tab-batch" class="panel hidden">
+  <div class="field">
+    <label for="folder-input">Folder path (absolute)</label>
+    <input type="text" id="folder-input" placeholder="/Users/you/lesson-specs">
+    <div class="sub" style="margin-top:0.3rem;">Builds every .json file in the folder. Validators run first; any spec with errors is skipped (others still build).</div>
+  </div>
+  <div class="actions">
+    <button id="batch-btn">Validate & build all</button>
+  </div>
+  <div id="batch-result"></div>
+</div>
+
+<div id="output-info" class="out-folder"></div>
+
+</div>
+
+<script>
+let currentSpec = null;
+let currentFileName = "";
+let lastValidationWarnings = [];
+
+// ---- Tab switching ----
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('tab-single').classList.toggle('hidden', t.dataset.tab !== 'single');
+    document.getElementById('tab-batch').classList.toggle('hidden', t.dataset.tab !== 'batch');
+  });
+});
+
+// ---- Output folder info ----
+fetch('/api/output-folder').then(r => r.json()).then(d => {
+  document.getElementById('output-info').textContent = `Output folder: ${d.path}`;
+});
+
+// ---- Single file ----
+const fileInput = document.getElementById('file-input');
+const validateBtn = document.getElementById('validate-btn');
+const buildBtn = document.getElementById('build-btn');
+const singleResult = document.getElementById('single-result');
+const specInfo = document.getElementById('spec-info');
+const specPreview = document.getElementById('spec-preview');
+
+fileInput.addEventListener('change', async e => {
+  const f = e.target.files[0];
+  if (!f) return;
+  currentFileName = f.name;
+  const text = await f.text();
+  try {
+    currentSpec = JSON.parse(text);
+    const slideCount = currentSpec.slides ? currentSpec.slides.length : '?';
+    const topic = currentSpec.meta && currentSpec.meta.topic ? currentSpec.meta.topic : '(no topic)';
+    const palette = (currentSpec.meta && currentSpec.meta.palette) || (currentSpec.palette ? 'inline' : 'none');
+    specPreview.textContent = `topic: ${topic}\nslides: ${slideCount}\npalette: ${palette}\nfile: ${f.name}`;
+    specInfo.classList.remove('hidden');
+    validateBtn.disabled = false;
+    buildBtn.classList.add('hidden');
+    singleResult.innerHTML = '';
+  } catch (err) {
+    specInfo.classList.add('hidden');
+    singleResult.innerHTML = `<div class="result error"><h3>Invalid JSON</h3>${escapeHtml(err.message)}</div>`;
+    validateBtn.disabled = true;
+  }
+});
+
+validateBtn.addEventListener('click', async () => {
+  validateBtn.disabled = true;
+  singleResult.innerHTML = '<div class="result">Validating…</div>';
+  try {
+    const r = await fetch('/api/validate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ spec: currentSpec })
+    });
+    const data = await r.json();
+    if (!data.ok) {
+      singleResult.innerHTML = `<div class="result error"><h3>Validation failed</h3>${escapeHtml(data.error)}</div>`;
+      buildBtn.classList.add('hidden');
+      validateBtn.disabled = false;
+      return;
+    }
+    lastValidationWarnings = data.warnings;
+    if (data.warnings.length === 0) {
+      singleResult.innerHTML = `<div class="result ok"><h3>Validation passed — no warnings</h3></div>`;
+      buildBtn.textContent = 'Build PPTX';
+      buildBtn.className = '';
+    } else {
+      singleResult.innerHTML = `<div class="result warn"><h3>Validation passed with ${data.warnings.length} warning${data.warnings.length===1?'':'s'}</h3><ul>${data.warnings.map(w=>`<li>${escapeHtml(w)}</li>`).join('')}</ul><div style="margin-top:0.6rem; font-size:0.85rem;">Review the warnings, then click <b>Build anyway</b> if you want to proceed.</div></div>`;
+      buildBtn.textContent = 'Build anyway';
+      buildBtn.className = 'warn';
+    }
+    buildBtn.classList.remove('hidden');
+    buildBtn.disabled = false;
+    validateBtn.disabled = false;
+  } catch (err) {
+    singleResult.innerHTML = `<div class="result error"><h3>Network error</h3>${escapeHtml(err.message)}</div>`;
+    validateBtn.disabled = false;
+  }
+});
+
+buildBtn.addEventListener('click', async () => {
+  buildBtn.disabled = true;
+  const prevHTML = singleResult.innerHTML;
+  try {
+    const r = await fetch('/api/build', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ spec: currentSpec })
+    });
+    const data = await r.json();
+    if (!data.ok) {
+      singleResult.innerHTML = `<div class="result error"><h3>Build failed</h3>${escapeHtml(data.error)}</div>`;
+      buildBtn.disabled = false;
+      return;
+    }
+    let dl = `<a class="download-link" href="/api/output/${encodeURIComponent(data.pptxName)}">⬇ ${escapeHtml(data.pptxName)}</a>`;
+    if (data.portalName) dl += ` <a class="download-link" href="/api/output/${encodeURIComponent(data.portalName)}">⬇ ${escapeHtml(data.portalName)}</a>`;
+    singleResult.innerHTML = prevHTML + `<div class="result ok"><h3>Built ${data.slideCount} slides</h3><div class="downloads">${dl}</div><div class="out-folder">Saved to: ${escapeHtml(data.outputDir)}</div></div>`;
+    buildBtn.classList.add('hidden');
+  } catch (err) {
+    singleResult.innerHTML = `<div class="result error"><h3>Network error</h3>${escapeHtml(err.message)}</div>`;
+    buildBtn.disabled = false;
+  }
+});
+
+// ---- Batch ----
+const batchBtn = document.getElementById('batch-btn');
+const folderInput = document.getElementById('folder-input');
+const batchResult = document.getElementById('batch-result');
+
+batchBtn.addEventListener('click', async () => {
+  const folder = folderInput.value.trim();
+  if (!folder) { batchResult.innerHTML = `<div class="result error">Enter a folder path.</div>`; return; }
+  batchBtn.disabled = true;
+  batchResult.innerHTML = '<div class="result">Validating and building…</div>';
+  try {
+    const r = await fetch('/api/build-batch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ folder })
+    });
+    const data = await r.json();
+    if (!data.ok) {
+      batchResult.innerHTML = `<div class="result error">${escapeHtml(data.error)}</div>`;
+      batchBtn.disabled = false;
+      return;
+    }
+    const okCount = data.results.filter(r=>r.status==='ok').length;
+    const failCount = data.results.filter(r=>r.status==='fail').length;
+    const rows = data.results.map(r => {
+      if (r.status === 'ok') {
+        const warnHtml = r.warnings && r.warnings.length ? `<div class="batch-message"><b>Warnings:</b><ul style="margin:0.3rem 0 0 1rem;">${r.warnings.map(w=>`<li>${escapeHtml(w)}</li>`).join('')}</ul></div>` : '';
+        let dl = `<a class="download-link" href="/api/output/${encodeURIComponent(r.pptxName)}">⬇ ${escapeHtml(r.pptxName)}</a>`;
+        if (r.portalName) dl += ` <a class="download-link" href="/api/output/${encodeURIComponent(r.portalName)}">⬇ ${escapeHtml(r.portalName)}</a>`;
+        const cls = (r.warnings && r.warnings.length) ? 'warn' : 'ok';
+        return `<div class="batch-row ${cls}"><div class="batch-file">${escapeHtml(r.file)} — built</div>${warnHtml}<div class="downloads" style="margin-top:0.5rem;">${dl}</div></div>`;
+      } else {
+        return `<div class="batch-row fail"><div class="batch-file">${escapeHtml(r.file)} — failed</div><div class="batch-message">${escapeHtml(r.message)}</div></div>`;
+      }
+    }).join('');
+    batchResult.innerHTML = `<div class="result ${failCount?'warn':'ok'}"><h3>Built ${okCount} of ${data.results.length} specs${failCount?` (${failCount} failed)`:''}</h3><div class="out-folder">Saved to: ${escapeHtml(data.outputDir)}</div></div>${rows}`;
+    batchBtn.disabled = false;
+  } catch (err) {
+    batchResult.innerHTML = `<div class="result error">${escapeHtml(err.message)}</div>`;
+    batchBtn.disabled = false;
+  }
+});
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+</script>
+</body>
+</html>
